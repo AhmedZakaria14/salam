@@ -12,6 +12,8 @@ const cairo = Cairo({
 
 const baseUrl = 'https://www.mandoubsalam5g.com';
 
+const brandLogo = 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png';
+
 export const metadata: Metadata = {
   title: 'عروض سلام فايبر و 5G | تأسيس إنترنت سلام في السعودية',
   description: 'تعرف على أفضل باقات إنترنت سلام فايبر و 5G المنزلية في السعودية، سرعات عالية وتأسيس مجاني. أرقام مناديب سلام واشتراك فوري للتواصل: 0508348048.',
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
     siteName: 'تأسيس إنترنت وتركيب فايبر 5G',
     images: [
       {
-        url: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png',
+        url: brandLogo,
         width: 1200,
         height: 630,
         alt: 'شعار سلام فايبر و 5G',
@@ -44,15 +46,15 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'عروض سلام فايبر و 5G | تأسيس إنترنت سلام في السعودية',
     description: 'أسرع إنترنت منزلي من سلام فايبر و 5G في السعودية. راوتر مجاني، سرعات تصل لـ 1000 ميجا.',
-    images: ['https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png'],
+    images: [brandLogo],
   },
   alternates: {
     canonical: `${baseUrl}/`,
   },
   icons: {
-    icon: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png',
-    shortcut: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png',
-    apple: 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png',
+    icon: brandLogo,
+    shortcut: brandLogo,
+    apple: brandLogo,
   },
   robots: {
     index: true,
@@ -93,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "telephone": "0508348048",
                 "logo": {
                    "@type": "ImageObject",
-                   "url": "https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png"
+                   "url": brandLogo
                 }
               },
               "offers": {
