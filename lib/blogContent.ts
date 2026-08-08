@@ -66,7 +66,8 @@ export function parseArticleMarkdown(markdown: string): ParsedArticle {
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
     const line = raw.trimEnd();
-    const heading = /^(#{1,6})\s+(.+)$/.exec(line.trim());
+    const trimmed = line.trim();
+    const heading = /^(#{1,6})\s+(.+)$/.exec(trimmed);
 
     if (heading) {
       flushParagraph();
@@ -84,7 +85,9 @@ export function parseArticleMarkdown(markdown: string): ParsedArticle {
       continue;
     }
 
-    if (!line.trim()) { flushParagraph(); closeList(); continue; }
+    // Ignore empty Markdown heading markers without changing any meaningful source text.
+    if (/^#{1,6}$/.test(trimmed)) { flushParagraph(); closeList(); continue; }
+    if (!trimmed) { flushParagraph(); closeList(); continue; }
 
     if (i + 1 < lines.length && line.includes('|') && isTableSeparator(lines[i + 1])) {
       flushParagraph(); closeList();
@@ -100,8 +103,8 @@ export function parseArticleMarkdown(markdown: string): ParsedArticle {
       continue;
     }
 
-    const bullet = /^[-*]\s+(.+)$/.exec(line.trim());
-    const ordered = /^(\d+)[.)]\s+(.+)$/.exec(line.trim());
+    const bullet = /^[-*]\s+(.+)$/.exec(trimmed);
+    const ordered = /^(\d+)[.)]\s+(.+)$/.exec(trimmed);
     if (bullet || ordered) {
       flushParagraph();
       const nextType = ordered ? 'ol' : 'ul';
@@ -112,7 +115,7 @@ export function parseArticleMarkdown(markdown: string): ParsedArticle {
       continue;
     }
 
-    paragraph.push(line.trim());
+    paragraph.push(trimmed);
   }
 
   flushParagraph();
