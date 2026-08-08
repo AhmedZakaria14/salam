@@ -5,7 +5,7 @@ import { ArrowUpLeft, BookOpen, Search } from 'lucide-react';
 import { Header, Footer } from '@/components/LayoutComponents';
 import { blogArticles } from '@/data/blogArticles';
 
-const baseUrl = 'https://xn-----ctdcm0aqck5plajre8a.com';
+const baseUrl = 'https://www.mandoubsalam5g.com';
 
 export const metadata: Metadata = {
   title: 'مدونة سلام فايبر | عروض وباقات فايبر سلام وأرقام التواصل',
