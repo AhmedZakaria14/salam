@@ -7,7 +7,7 @@ import { Header, Footer } from '@/components/LayoutComponents';
 import { blogArticles, getBlogArticle } from '@/data/blogArticles';
 import { getArticleContent } from '@/lib/blogContent';
 
-const baseUrl = 'https://xn-----ctdcm0aqck5plajre8a.com';
+const baseUrl = 'https://www.mandoubsalam5g.com';
 
 type Props = { params: Promise<{ slug: string }> };
 
