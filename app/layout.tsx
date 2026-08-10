@@ -1,6 +1,5 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cairo } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 
 const cairo = Cairo({
@@ -13,6 +12,12 @@ const cairo = Cairo({
 const baseUrl = 'https://www.mandoubsalam5g.com';
 
 const brandLogo = 'https://res.cloudinary.com/dxvjqrb9l/image/upload/v1780879636/%D8%B4%D8%B1%D9%83%D8%A9_%D8%B3%D9%84%D8%A7%D9%85_%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84_%D9%84%D9%88%D8%AC%D9%88_korawo.png';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#009045',
+};
 
 export const metadata: Metadata = {
   title: 'عروض سلام فايبر و 5G | تأسيس إنترنت سلام في السعودية',
@@ -71,42 +76,41 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const siteSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${baseUrl}/#organization`,
+        name: 'تأسيس إنترنت وتركيب فايبر 5G',
+        url: baseUrl,
+        telephone: '0508348048',
+        logo: {
+          '@type': 'ImageObject',
+          url: brandLogo,
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${baseUrl}/#website`,
+        url: baseUrl,
+        name: 'مندوب سلام فايبر و5G',
+        inLanguage: 'ar-SA',
+        publisher: { '@id': `${baseUrl}/#organization` },
+      },
+    ],
+  };
+
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#009045" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-brand-gray text-[#444] font-sans antialiased" suppressHydrationWarning>
+      <body className="max-w-full overflow-x-clip bg-brand-gray font-sans text-[#444] antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": "عروض سلام فايبر و 5G | تأسيس إنترنت سلام في السعودية",
-              "description": "استمتع بأفضل باقات إنترنت سلام فايبر و 5G المنزلية في السعودية، سرعات عالية تصل إلى 1000 ميجابت وعروض حصرية، راوتر وتأسيس مجاني.",
-              "url": `${baseUrl}/`,
-              "publisher": {
-                "@type": "Organization",
-                "name": "تأسيس إنترنت وتركيب فايبر 5G",
-                "telephone": "0508348048",
-                "logo": {
-                   "@type": "ImageObject",
-                   "url": brandLogo
-                }
-              },
-              "offers": {
-                "@type": "AggregateOffer",
-                "priceCurrency": "SAR",
-                "lowPrice": "174",
-                "highPrice": "300",
-                "offerCount": "6"
-              }
-            })
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
         {children}
       </body>
