@@ -10,8 +10,25 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
-  html, body { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  html {
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  html, body {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  img, video, canvas {
+    max-width: 100%;
+  }
 }
 
 @layer utilities {
@@ -20,9 +37,23 @@
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
-.article-content { color: #374151; font-size: 1.05rem; line-height: 2; }
+.article-content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  color: #374151;
+  font-size: 1.05rem;
+  line-height: 2;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.article-content > * {
+  max-width: 100%;
+}
+
 .article-content > * + * { margin-top: 1.15rem; }
-.article-content h2, .article-content h3 { scroll-margin-top: 7rem; color: #111827; font-weight: 900; line-height: 1.55; }
+.article-content h2, .article-content h3 { scroll-margin-top: 7rem; color: #111827; font-weight: 900; line-height: 1.55; overflow-wrap: anywhere; }
 .article-content h2 { margin-top: 2.5rem; padding-bottom: .65rem; border-bottom: 2px solid #e5e7eb; font-size: clamp(1.55rem, 3vw, 2rem); }
 .article-content h3 { margin-top: 1.9rem; font-size: clamp(1.2rem, 2.4vw, 1.45rem); }
 .article-content strong { color: #111827; font-weight: 800; }
@@ -30,10 +61,86 @@
 .article-content ul { list-style: disc; }
 .article-content ol { list-style: decimal; }
 .article-content li + li { margin-top: .45rem; }
-.article-content a { color: #007a3b; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
-.article-content table { width: 100%; min-width: 650px; border-collapse: collapse; text-align: right; background: white; }
-.article-content table th { background: #009045; color: white; font-weight: 800; }
-.article-content table th, .article-content table td { border: 1px solid #d1d5db; padding: .8rem .9rem; vertical-align: top; }
+.article-content a {
+  color: #007a3b;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.article-table-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+.article-content table {
+  display: table;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+  border-collapse: collapse;
+  text-align: right;
+  background: white;
+}
+
+.article-content table th {
+  background: #009045;
+  color: white;
+  font-weight: 800;
+}
+
+.article-content table th,
+.article-content table td {
+  min-width: 9rem;
+  border: 1px solid #d1d5db;
+  padding: .8rem .9rem;
+  vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .article-content table tr:nth-child(even) td { background: #f9fafb; }
-.article-content table { display: block; overflow-x: auto; border-radius: 1rem; }
 .article-content blockquote { border-right: 4px solid #009045; background: #f0fdf4; padding: 1rem 1.25rem; border-radius: .75rem; }
+
+@media (max-width: 640px) {
+  .article-content {
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+
+  .article-content h2 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+  }
+
+  .article-content h3 {
+    margin-top: 1.5rem;
+    font-size: 1.16rem;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    padding-right: 1.15rem;
+  }
+
+  .article-content table th,
+  .article-content table td {
+    min-width: 8rem;
+    padding: .7rem;
+    font-size: .92rem;
+  }
+
+  .article-content blockquote {
+    padding: .85rem 1rem;
+  }
+}
