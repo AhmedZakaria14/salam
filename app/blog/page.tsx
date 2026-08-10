@@ -31,7 +31,7 @@ export default function BlogPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip bg-gray-50 text-gray-800">
       <Header />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
@@ -40,45 +40,45 @@ export default function BlogPage() {
         itemListElement: itemList,
       }) }} />
 
-      <section className="relative overflow-hidden bg-[#009045] py-20 md:py-28">
+      <section className="relative w-full max-w-full overflow-hidden bg-[#009045] py-14 sm:py-20 md:py-28">
         <div className="absolute inset-0 opacity-10" aria-hidden="true">
           <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full border-[50px] border-white" />
           <div className="absolute -bottom-28 -left-20 h-96 w-96 rounded-full border-[60px] border-white" />
         </div>
-        <div className="container relative mx-auto px-4 text-center text-white">
-          <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-bold backdrop-blur">
-            <BookOpen size={18} /> مدونة سلام فايبر
+        <div className="container relative mx-auto min-w-0 px-4 text-center text-white">
+          <div className="mx-auto mb-5 inline-flex max-w-full items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-bold backdrop-blur">
+            <BookOpen size={18} className="shrink-0" /> <span className="min-w-0 break-words">مدونة سلام فايبر</span>
           </div>
-          <h1 className="mb-5 text-4xl font-black leading-tight md:text-6xl">دليلك إلى فايبر سلام وعروض وباقات سلام</h1>
-          <p className="mx-auto max-w-3xl text-lg leading-8 text-white/90 md:text-xl">
+          <h1 className="mb-5 max-w-full break-words text-3xl font-black leading-tight sm:text-4xl md:text-6xl">دليلك إلى فايبر سلام وعروض وباقات سلام</h1>
+          <p className="mx-auto max-w-3xl break-words text-base leading-8 text-white/90 sm:text-lg md:text-xl">
             أدلة عملية تجمع تفاصيل خدمة سلام فايبر، العروض والباقات وطرق التواصل والسداد في صفحات منظمة وسهلة التصفح.
           </p>
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-14 md:py-20">
-        <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-          <div>
-            <span className="mb-2 inline-flex items-center gap-2 text-sm font-bold text-[#009045]"><Search size={17} /> أحدث الأدلة</span>
-            <h2 className="text-3xl font-black text-gray-900 md:text-4xl">مقالات سلام فايبر</h2>
+      <main className="container mx-auto min-w-0 px-4 py-10 sm:py-14 md:py-20">
+        <div className="mb-8 flex min-w-0 flex-col items-start justify-between gap-4 sm:mb-10 md:flex-row md:items-end">
+          <div className="min-w-0">
+            <span className="mb-2 inline-flex items-center gap-2 text-sm font-bold text-[#009045]"><Search size={17} className="shrink-0" /> أحدث الأدلة</span>
+            <h2 className="break-words text-3xl font-black text-gray-900 md:text-4xl">مقالات سلام فايبر</h2>
           </div>
-          <p className="max-w-xl leading-7 text-gray-600">اختر المقال المناسب لاحتياجك. تفتح صفحات المقالات في تبويب جديد لتسهيل المقارنة بينها.</p>
+          <p className="max-w-xl break-words leading-7 text-gray-600">اختر المقال المناسب لاحتياجك. تفتح صفحات المقالات في تبويب جديد لتسهيل المقارنة بينها.</p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid min-w-0 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
           {blogArticles.map((article) => (
-            <article key={article.slug} className="group overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <Link href={`/blog/${article.slug}`} target="_blank" rel="noopener noreferrer" className="block">
-                <div className="relative aspect-[1200/630] overflow-hidden bg-[#009045]">
+            <article key={article.slug} className="group min-w-0 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl sm:rounded-3xl">
+              <Link href={`/blog/${article.slug}`} target="_blank" rel="noopener noreferrer" className="block min-w-0">
+                <div className="relative aspect-[1200/630] w-full overflow-hidden bg-[#009045]">
                   <Image src={article.image} alt={article.title} fill className="object-cover transition duration-500 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
-                <div className="p-6">
-                  <div className="mb-3 flex flex-wrap gap-2">
-                    {article.keywords.slice(0, 2).map((keyword) => <span key={keyword} className="rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-[#007a3b]">{keyword}</span>)}
+                <div className="min-w-0 p-5 sm:p-6">
+                  <div className="mb-3 flex min-w-0 flex-wrap gap-2">
+                    {article.keywords.slice(0, 2).map((keyword) => <span key={keyword} className="max-w-full break-words rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-[#007a3b]">{keyword}</span>)}
                   </div>
-                  <h3 className="mb-3 text-2xl font-black leading-9 text-gray-900 group-hover:text-[#009045]">{article.title}</h3>
-                  <p className="mb-5 line-clamp-3 leading-7 text-gray-600">{article.excerpt || article.description}</p>
-                  <span className="inline-flex items-center gap-2 font-bold text-[#009045]">قراءة المقال <ArrowUpLeft size={18} /></span>
+                  <h3 className="mb-3 max-w-full break-words text-xl font-black leading-8 text-gray-900 group-hover:text-[#009045] sm:text-2xl sm:leading-9">{article.title}</h3>
+                  <p className="mb-5 line-clamp-3 break-words leading-7 text-gray-600">{article.excerpt || article.description}</p>
+                  <span className="inline-flex items-center gap-2 font-bold text-[#009045]">قراءة المقال <ArrowUpLeft size={18} className="shrink-0" /></span>
                 </div>
               </Link>
             </article>
